@@ -1,7 +1,6 @@
 <div class="bg-gray-100 h-full">
   <div
     class="mx-auto max-w-7xl px-20 sm:px-24 lg:px-28 py-10 bg-white overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-
     <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
       <div class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap">
         <div class="ml-4 mt-2">
@@ -16,22 +15,9 @@
         </div>
       </div>
     </div>
-
     <fieldset>
       <legend class="sr-only">{{taskList.title}}</legend>
-      <div *ngFor="let task of taskList.tasks;"
-           class="relative flex items-start border-b border-gray-200 hover:bg-gray-50 p-2">
-        <div class="flex h-5 self-center">
-          <input aria-describedby="comments-description"
-                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" id="comments"
-                 name="comments"
-                 type="checkbox">
-        </div>
-        <div class="ml-3 text-sm">
-          <label class="font-medium text-gray-700" for="comments">{{task.name}}</label>
-          <p class="text-gray-500" id="comments-description">{{task.detail}}</p>
-        </div>
-      </div>
+      <app-task-item *ngFor="let task of taskList.tasks;" [task]="task"></app-task-item>
     </fieldset>
   </div>
 </div>
