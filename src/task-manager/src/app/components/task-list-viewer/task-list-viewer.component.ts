@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {TaskList} from "../../Models/task-list.model";
 
 @Component({
   selector: 'app-task-list-viewer',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskListViewerComponent implements OnInit {
 
-  constructor() { }
+  @Input() public taskList: TaskList = {
+    title: 'My Task List',
+    tasks: [{name: 'Task1', detail: 'Blah', dateCompleted: new Date},
+      {name: 'Task2', detail: 'Blah', dateCompleted: new Date},
+      {name: 'Task3', detail: 'Blah', dateCompleted: new Date},
+      {name: 'Task4', detail: 'Blah', dateCompleted: new Date},
+      {name: 'Task5', detail: 'Blah', dateCompleted: new Date},
+      {name: 'Task6', detail: 'Blah', dateCompleted: new Date},]
+  };
 
-  ngOnInit(): void {
+  public constructor() {
+  }
+
+  public ngOnInit(): void {
   }
 
 }
