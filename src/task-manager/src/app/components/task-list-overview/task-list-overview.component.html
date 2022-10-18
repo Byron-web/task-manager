@@ -1,1 +1,22 @@
-<p>task-list-overview works!</p>
+<div class="bg-gray-100 h-full">
+  <div
+    class="mx-auto max-w-7xl px-20 sm:px-24 lg:px-28 py-10 bg-white overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
+  >
+    <div class="flex flex-row justify-between px-4 py-5 sm:px-6 border-b mb-10">
+      <div class="ml-4 flex items-center">
+        <h3 class="text-3xl font-medium leading-6 text-gray-900">My Lists</h3>
+      </div>
+      <div>
+        <button
+          class="relative inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          type="button"
+        >
+          Add Task
+        </button>
+      </div>
+    </div>
+    <app-task-list-card>
+      *ngFor="let card of taskCard" [card]="card"
+    </app-task-list-card>
+  </div>
+</div>
