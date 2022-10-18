@@ -1,7 +1,4 @@
-<!-- <div
-  class="ml-10 w-2/4 lg:px-5 py-4 shadow ring-1 ring-black ring-opacity-5 md:rounded-lg bg-indigo-600 hover:bg-indigo-800"
->
-  
-</div> -->
-
-<h3 class="font-semibold">{{ taskList.title }}</h3>
+<div class="flex hover:bg-gray-50 p-5 border-b border-gray-200 cursor-pointer">
+  <h3 class="font-semibold">{{ taskList.title }}</h3>
+  <h2 class="font-extralight ml-3">{{ getCompletedTasksMessage() }}</h2>
+</div>

@@ -1,7 +1,6 @@
 <div class="bg-gray-100 h-full">
   <div
-    class="mx-auto max-w-7xl px-20 sm:px-24 lg:px-28 py-10 bg-white overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
-  >
+    class="mx-auto max-w-7xl px-20 sm:px-24 lg:px-28 py-10 bg-white overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
     <div class="flex flex-row justify-between px-4 py-5 sm:px-6 border-b mb-10">
       <div class="ml-4 flex items-center">
         <h3 class="text-3xl font-medium leading-6 text-gray-900">My Lists</h3>
@@ -9,23 +8,14 @@
       <div>
         <button
           class="relative inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-          type="button"
-        >
-          Add Task
+          type="button">
+          Add List
         </button>
       </div>
     </div>
-
-    <app-task-list-card
-      *ngFor="let taskList of taskLists"
-      [taskList]="taskList"
-      (click)="selectList(taskList)"
-    >
+    <app-task-list-card (click)="selectList(taskList)" *ngFor="let taskList of taskLists" [taskList]="taskList">
       {{ taskList.title }}
     </app-task-list-card>
   </div>
-  <app-task-list
-    [taskList]="currentTaskList ?? new TaskList()"
-    *ngIf="!currentTaskList"
-  ></app-task-list>
+  <app-task-list *ngIf="currentTaskList" [taskList]="currentTaskList"></app-task-list>
 </div>
