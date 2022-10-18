@@ -15,8 +15,17 @@
         </button>
       </div>
     </div>
-    <app-task-list-card>
-      *ngFor="let card of taskCard" [card]="card"
+
+    <app-task-list-card
+      *ngFor="let taskList of taskLists"
+      [taskList]="taskList"
+      (click)="selectList(taskList)"
+    >
+      {{ taskList.title }}
     </app-task-list-card>
   </div>
+  <app-task-list
+    [taskList]="currentTaskList ?? new TaskList()"
+    *ngIf="!currentTaskList"
+  ></app-task-list>
 </div>

@@ -1,26 +1,25 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {TaskListOverviewComponent} from './components/task-list-overview/task-list-overview.component';
-import {TaskListComponent} from './components/task-list/task-list.component';
-import {TaskItemComponent} from './components/task-item/task-item.component';
-<<<<<<< HEAD
 import { TaskListCardComponent } from './components/task-list-card/task-list-card.component';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { TaskListOverviewComponent } from './components/task-list-overview/task-list-overview.component';
+import { TaskListComponent } from './components/task-list/task-list.component';
+import { TaskItemComponent } from './components/task-item/task-item.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, TaskListOverviewComponent, TaskListComponent, TaskItemComponent, TaskListCardComponent,],
-  imports: [BrowserModule, AppRoutingModule],
-=======
-import {FormsModule} from "@angular/forms";
-
-@NgModule({
-  declarations: [AppComponent, TaskListOverviewComponent, TaskListComponent, TaskItemComponent,],
+  declarations: [
+    AppComponent,
+    TaskListOverviewComponent,
+    TaskListComponent,
+    TaskItemComponent,
+    TaskListCardComponent,
+    TaskListOverviewComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
->>>>>>> feat/task-viewer-initial
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}
