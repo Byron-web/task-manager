@@ -1,5 +1,8 @@
 export interface TaskItem {
+  id: string,
   name: string,
   detail: string,
-  dateCompleted: Date
+  completed: boolean,
+  dateCompleted: Date,
+  editMode: boolean
 }

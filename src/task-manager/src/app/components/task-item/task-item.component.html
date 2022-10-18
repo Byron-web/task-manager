@@ -1,39 +1,77 @@
-<div class="flex justify-between border-b border-gray-200 hover:bg-gray-50 p-2 cursor-pointer group">
-  <div class="flex self-center">
+<div class="flex justify-between border-b border-gray-200 hover:bg-gray-50 p-2 group">
+  <div *ngIf="!task.editMode" class="flex self-center">
     <div class="flex h-5 self-center">
-      <input aria-describedby="comments-description"
-             class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" id="comments"
+      <input (click)="completeTask()"
+             [(ngModel)]="task.completed"
+             aria-describedby="comments-description"
+             class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
              name="comments"
              type="checkbox">
     </div>
     <div class="ml-3 text-sm">
-      <label class="font-medium text-gray-700" for="comments">{{task.name}}</label>
+      <label class="font-medium text-gray-700">{{task.name}}</label>
       <p class="text-gray-500" id="comments-description">{{task.detail}}</p>
     </div>
   </div>
-  <div
-    (click)="toggleEdit()"
-    class="self-center invisible m-2 group-hover:visible p-2 hover:bg-gray-200 hover:text-white active:bg-gray-50 rounded-3xl">
-    <svg
-      *ngIf="!editMode"
-      class="h-5 w-5 text-indigo-500 hover:text-indigo-300 active:text-indigo-200"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1.5" viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
-        stroke-linecap="round"
-        stroke-linejoin="round"/>
-    </svg>
-    <svg
-      *ngIf="editMode"
-      class="h-5 w-5 text-green-500 hover:text-green-300 active:text-green-200"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1.5" viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg">
-      <path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
+  <div *ngIf="task.editMode" class="flex self-center">
+    <div class="flex h-5 self-center">
+      <input [(ngModel)]="task.completed"
+             aria-describedby="comments-description"
+             class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+             name="comments"
+             type="checkbox">
+    </div>
+    <input
+      [(ngModel)]="task.name"
+      class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm mx-3"
+      name="task"
+      placeholder="Task"
+      type="text">
+    <input
+      [(ngModel)]="task.detail"
+      class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm mx-3"
+      name="task-details"
+      placeholder="Details"
+      type="text">
+  </div>
+  <div class="flex">
+    <div *ngIf="task.completed" class="self-center text-sm pr-5">{{formatDate(task.dateCompleted)}}</div>
+    <div
+      (click)="toggleEdit()"
+      class="self-center invisible m-2 group-hover:visible p-2 hover:bg-gray-100 hover:text-white active:bg-gray-50 rounded-3xl cursor-pointer">
+      <svg
+        *ngIf="!task.editMode"
+        class="h-5 w-5 text-indigo-500 active:text-indigo-200"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+      </svg>
+      <svg
+        *ngIf="task.editMode"
+        class="h-5 w-5 text-green-500 active:text-green-200"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div
+      (click)="deleteTask()"
+      class="self-center invisible m-2 group-hover:visible p-2 hover:bg-gray-100 hover:text-white active:bg-gray-50 rounded-3xl cursor-pointer">
+      <svg
+        class="h-5 w-5 text-red-500 active:text-red-200"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
   </div>
 </div>

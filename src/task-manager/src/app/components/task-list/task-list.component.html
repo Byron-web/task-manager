@@ -1,23 +1,59 @@
-<div class="bg-gray-100 h-full">
-  <div
-    class="mx-auto max-w-7xl px-20 sm:px-24 lg:px-28 py-10 bg-white overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-    <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
-      <div class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap">
-        <div class="ml-4 mt-2">
-          <h3 class="text-3xl font-medium leading-6 text-gray-900">{{taskList.title}}</h3>
-        </div>
-        <div class="ml-4 mt-2 flex-shrink-0">
-          <button
-            class="relative inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            type="button">
-            Add Task
-          </button>
+<div
+  class="mx-auto my-10 max-w-7xl py-10 px-20 sm:px-24 lg:px-28 bg-white shadow ring-1 ring-black ring-opacity-5 md:rounded-lg overflow-hidden">
+  <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
+    <div class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap">
+      <div class="flex ml-4 mt-2 group">
+        <h3 *ngIf="!taskList.editMode"
+            class="self-center text-3xl font-medium leading-6 text-gray-900">{{taskList.title}}</h3>
+        <input
+          *ngIf="taskList.editMode"
+          [(ngModel)]="taskList.title"
+          class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-3xl font-medium leading-6 text-gray-900"
+          name="task-list-title"
+          placeholder="Title"
+          type="text">
+        <div
+          (click)="toggleEdit()"
+          class="self-center invisible m-2 group-hover:visible p-2 hover:bg-gray-100 hover:text-white active:bg-gray-50 rounded-3xl cursor-pointer">
+          <svg
+            *ngIf="!taskList.editMode"
+            class="h-5 w-5 text-indigo-500 active:text-indigo-200"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+          </svg>
+          <svg
+            *ngIf="taskList.editMode"
+            class="h-5 w-5 text-green-500 active:text-green-200"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
       </div>
+      <div class="ml-4 mt-2 flex-shrink-0">
+        <button
+          (click)="addTask()"
+          class="relative inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          type="button">
+          Add Task
+        </button>
+      </div>
     </div>
-    <fieldset>
-      <legend class="sr-only">{{taskList.title}}</legend>
-      <app-task-item *ngFor="let task of taskList.tasks;" [task]="task"></app-task-item>
-    </fieldset>
+  </div>
+  <fieldset *ngIf="taskList.tasks.length > 0">
+    <legend class="sr-only">{{taskList.title}}</legend>
+    <app-task-item (removeTask)="deleteTask($event)" *ngFor="let task of taskList.tasks;"
+                   [task]="task"></app-task-item>
+  </fieldset>
+  <div *ngIf="taskList.tasks.length <= 0" class="flex items-center justify-center p-20 text-5xl font-extralight">No
+    Tasks
   </div>
 </div>

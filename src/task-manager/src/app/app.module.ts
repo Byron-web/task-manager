@@ -6,10 +6,11 @@ import {AppComponent} from './app.component';
 import {TaskListOverviewComponent} from './components/task-list-overview/task-list-overview.component';
 import {TaskListComponent} from './components/task-list/task-list.component';
 import {TaskItemComponent} from './components/task-item/task-item.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent, TaskListOverviewComponent, TaskListComponent, TaskItemComponent,],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
