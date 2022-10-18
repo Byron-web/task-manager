@@ -6,11 +6,19 @@ import {AppComponent} from './app.component';
 import {TaskListOverviewComponent} from './components/task-list-overview/task-list-overview.component';
 import {TaskListComponent} from './components/task-list/task-list.component';
 import {TaskItemComponent} from './components/task-item/task-item.component';
+<<<<<<< HEAD
 import { TaskListCardComponent } from './components/task-list-card/task-list-card.component';
 
 @NgModule({
   declarations: [AppComponent, TaskListOverviewComponent, TaskListComponent, TaskItemComponent, TaskListCardComponent,],
   imports: [BrowserModule, AppRoutingModule],
+=======
+import {FormsModule} from "@angular/forms";
+
+@NgModule({
+  declarations: [AppComponent, TaskListOverviewComponent, TaskListComponent, TaskItemComponent,],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
+>>>>>>> feat/task-viewer-initial
   providers: [],
   bootstrap: [AppComponent]
 })
