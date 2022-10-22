@@ -1,11 +1,9 @@
 <div
-  class="mx-auto my-10 max-w-7xl py-10 px-20 sm:px-24 lg:px-28 bg-white shadow ring-1 ring-black ring-opacity-5 md:rounded-lg overflow-hidden"
+  class="mx-auto h-full w-full py-10 px-20 sm:px-24 lg:px-28 bg-white overflow-hidden"
 >
   <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
-    <div
-      class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap"
-    >
-      <div class="flex ml-4 mt-2 group">
+    <div class="flex flex-wrap items-center justify-between sm:flex-nowrap">
+      <div class="flex group">
         <h3
           *ngIf="!taskList.editMode"
           class="self-center text-3xl font-medium leading-6 text-gray-900"
@@ -20,6 +18,19 @@
           placeholder="Title"
           type="text"
         />
+        <!-- <select property="" class="rounded-md p-3 w-16" name="icon">
+          <option value="academic-cap">
+            <svg style="fill: red"><use href="#academic-cap" /></svg>
+          </option>
+        </select> -->
+        <select
+          name="icon"
+          class="h-full bg-transparent rounded-md p-3 w-16 py-0 pl-2 pr-7 text-gray-500 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+        >
+          <option></option>
+          <option></option>
+          <option></option>
+        </select>
         <div
           (click)="toggleEdit()"
           class="self-center invisible m-2 group-hover:visible p-2 hover:bg-gray-100 hover:text-white active:bg-gray-50 rounded-3xl cursor-pointer"
@@ -59,7 +70,7 @@
       <div class="ml-4 mt-2 flex-shrink-0">
         <button
           (click)="addTask()"
-          class="relative inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          class="relative inline-flex items-center rounded-md border border-transparent bg-cyan-700 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-600 focus:ring-offset-2"
           type="button"
         >
           Add Task
@@ -77,7 +88,7 @@
   </fieldset>
   <div
     *ngIf="taskList.tasks.length <= 0"
-    class="flex items-center justify-center p-20 text-5xl font-extralight"
+    class="flex items-center justify-center py-20 text-5xl font-extralight"
   >
     No Tasks
   </div>

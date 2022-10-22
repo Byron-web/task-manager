@@ -1,21 +1,65 @@
-<div class="bg-gray-100 h-full">
+<div class="h-full w-full flex flex-row border-r">
   <div
-    class="mx-auto max-w-7xl px-20 sm:px-24 lg:px-28 py-10 bg-white overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-    <div class="flex flex-row justify-between px-4 py-5 sm:px-6 border-b mb-10">
-      <div class="ml-4 flex items-center">
-        <h3 class="text-3xl font-medium leading-6 text-gray-900">My Lists</h3>
+    [ngClass]="isOpened ? 'w-[35rem]' : 'w-[5rem]'"
+    class="h-full p-5 flex flex-col justify-between overflow-hidden bg-slate-300"
+  >
+    <div>
+      <div
+        class="flex flex-row justify-between px-4 py-5 sm:px-6 border-b mb-10"
+      >
+        <div class="ml-4 flex items-center">
+          <h3 class="text-3xl font-medium translate-x-3/4 leading-6">
+            My Lists
+          </h3>
+        </div>
+        <div>
+          <button
+            (click)="addList()"
+            class="relative inline-flex items-center rounded-md border border-transparent bg-cyan-700 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:bg-cyan-600 focus:ring-offset-2"
+            type="button"
+          >
+            Add List
+          </button>
+        </div>
       </div>
-      <div>
-        <button
-          class="relative inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-          type="button">
-          Add List
-        </button>
+      <app-task-list-card
+        (click)="selectList(taskList)"
+        *ngFor="let taskList of taskLists"
+        [taskList]="taskList"
+      >
+        {{ taskList.title }}
+      </app-task-list-card>
+      <div
+        *ngIf="this.taskLists.length <= 0"
+        class="flex items-center justify-center p-20 text-5xl font-extralight"
+      >
+        No Tasks
       </div>
     </div>
-    <app-task-list-card (click)="selectList(taskList)" *ngFor="let taskList of taskLists" [taskList]="taskList">
-      {{ taskList.title }}
-    </app-task-list-card>
+    <button class="flex justify-end" (click)="toggleNav()">
+      <svg
+        [ngClass]="isOpened ? 'rotate-0' : 'rotate-180'"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6 cursor-pointer transition-transform"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+        />
+      </svg>
+    </button>
   </div>
-  <app-task-list *ngIf="currentTaskList" [taskList]="currentTaskList"></app-task-list>
+  <div class="flex justify-center items-center text-7xl ml-52">
+    <h1 *ngIf="!currentTaskList">Please Choose or Create a List</h1>
+  </div>
+  <app-task-list
+    class="w-full"
+    *ngIf="currentTaskList"
+    [taskList]="currentTaskList"
+  ></app-task-list>
 </div>
