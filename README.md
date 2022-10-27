@@ -229,7 +229,7 @@ Project Link: [https://github.com/Byron-web/task-manager](https://github.com/Byr
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge <!--Make new shields and check logo url -->
 [contributors-url]: https://github.com/Byron-web/task-manager/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
 [forks-url]: https://github.com/Byron-web/task-manager/network/members
