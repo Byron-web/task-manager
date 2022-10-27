@@ -1,5 +1,5 @@
 import { TaskList } from '../../models/task-list.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Input } from '@angular/core';
 
 @Component({
@@ -9,6 +9,8 @@ import { Input } from '@angular/core';
 })
 export class TaskListCardComponent implements OnInit {
   @Input() public taskList!: TaskList;
+  @Output() removeTaskList = new EventEmitter<string>();
+  @Input() public isOpen: boolean = true;
   public noList = '';
 
   public constructor() {}
@@ -20,6 +22,10 @@ export class TaskListCardComponent implements OnInit {
     let completedTasks: number = this.taskList.tasks.filter(
       (x) => x.completed
     ).length;
-    return `Completed ${completedTasks} out of ${totalTasks}`;
+    return `${completedTasks} / ${totalTasks}`;
+  }
+
+  public remove(): void {
+    this.removeTaskList.emit(this.taskList.id);
   }
 }

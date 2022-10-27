@@ -3,6 +3,7 @@ import { TaskList } from '../../models/task-list.model';
 import { TaskItem } from '../../models/task-item.model';
 import * as _ from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-task-list',
@@ -11,7 +12,14 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class TaskListComponent implements OnInit {
   @Input() public taskList!: TaskList;
-  public iconList: string[] = ['academic-cap'];
+  public iconDropDown: boolean = false;
+  public iconList: string[] = [
+    'academic-cap',
+    'home',
+    'work',
+    'favorite',
+    'important',
+  ];
 
   public constructor() {}
 
@@ -34,5 +42,13 @@ export class TaskListComponent implements OnInit {
 
   public deleteTask(task: TaskItem): void {
     _.remove(this.taskList.tasks, (x) => x.id === task.id);
+  }
+
+  public toggleIconDropDown(): void {
+    this.iconDropDown = !this.iconDropDown;
+  }
+
+  public setIcon(icon: string): void {
+    this.taskList.icon = icon;
   }
 }

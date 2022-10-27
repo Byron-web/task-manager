@@ -1,6 +1,7 @@
 import { TaskList } from '../../models/task-list.model';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-task-list-overview',
@@ -50,11 +51,19 @@ export class TaskListOverviewComponent implements OnInit, OnDestroy {
     });
   }
 
+  public removeList(): void {
+    this.taskLists.pop();
+  }
+
   public miniList(): void {
     document.getElementById('list-wrapper')?.style.width;
   }
 
   public toggleNav(): void {
     this.isOpened = !this.isOpened;
+  }
+
+  public removeTaskList(id: string): void {
+    _.remove(this.taskLists, (x) => x.id === id);
   }
 }

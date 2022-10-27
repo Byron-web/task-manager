@@ -1,6 +1,48 @@
 <div
-  class="flex hover:bg-cyan-700 hover:text-white p-5 border-gray-200 cursor-pointer"
+  [ngClass]="isOpen ? '' : 'justify-center, p-4'"
+  class="flex items-center justify-between hover:bg-sky-600 hover:text-white p-5 border-gray-200 cursor-pointer"
 >
-  <h3 class="font-semibold">{{ taskList.title }}</h3>
-  <h2 class="font-extralight ml-3">{{ getCompletedTasksMessage() }}</h2>
+  <div>
+    <svg
+      [ngClass]="isOpen ? '' : 'left-0'"
+      class="relative -left-4 h-4/5"
+      width="30"
+      height="30"
+      version="2.0"
+    >
+      <a>
+        <use [attr.href]="'#' + taskList.icon" />
+      </a>
+    </svg>
+  </div>
+
+  <h3
+    [ngClass]="isOpen ? '' : 'hidden'"
+    class="w-[6rem] first-letter:font-semibold text-ellipsis overflow-hidden whitespace-nowrap"
+  >
+    {{ taskList.title }}
+  </h3>
+  <h2 [ngClass]="isOpen ? '' : 'hidden'" class="font-extralight ml-3">
+    {{ getCompletedTasksMessage() }}
+  </h2>
+  <div
+    [ngClass]="isOpen ? '' : 'hidden'"
+    (click)="remove()"
+    class="self-center m-2 group-hover:visible p-2 hover:bg-gray-100 hover:text-white active:bg-gray-50 rounded-3xl cursor-pointer"
+  >
+    <svg
+      class="h-5 w-5 text-red-500 active:text-red-200"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 18L18 6M6 6l12 12"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
 </div>

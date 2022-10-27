@@ -1,8 +1,10 @@
-get box-shadow elements for task cards and finalize cards
-get a nav-menu
-get a nice empty state and skeleton, use tailwind css pulsing feature
-fix select tag and populate with icons
-fix side menu and style correctly
-add correct color styles
-make app responsive
-get icons for task cards
+get box-shadow elements for task cards and finalize cards --Now
+get a nav-menu --V2
+get a nice empty state and skeleton, use tailwind css pulsing feature --V2
+fix select tag and populate with icons --now
+fix side menu and style correctly --DONE
+add correct color styles --now
+make app responsive --V2 (restrictions on V1)
+get icons for task cards --now
+add calendar (each day has its own lists and task, but this feature is optional)
+Ask Jarque about side arrow closing list menu conencting to cards to hide all elements except icons

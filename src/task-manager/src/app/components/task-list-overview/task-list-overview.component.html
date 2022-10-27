@@ -1,31 +1,61 @@
 <div class="h-full w-full flex flex-row border-r">
   <div
-    [ngClass]="isOpened ? 'w-[35rem]' : 'w-[5rem]'"
-    class="h-full p-5 flex flex-col justify-between overflow-hidden bg-slate-300"
+    [ngClass]="isOpened ? 'w-[35rem]' : 'w-[1rem], p1'"
+    class="h-full p-5 flex flex-col justify-between overflow-hidden bg-slate-200"
   >
-    <div>
+    <div
+      [ngClass]="
+        isOpened
+          ? ''
+          : 'overflow-hidden, w-[2rem], flex, flex-row, items-center'
+      "
+      class="overflow-x-auto whitespace-nowrap"
+    >
       <div
+        [ngClass]="isOpened ? '' : 'px-1, sm:px-1'"
         class="flex flex-row justify-between px-4 py-5 sm:px-6 border-b mb-10"
       >
-        <div class="ml-4 flex items-center">
-          <h3 class="text-3xl font-medium translate-x-3/4 leading-6">
+        <div class="flex items-center text-left">
+          <h3
+            [ngClass]="isOpened ? '' : 'hidden'"
+            class="text-3xl font-medium translate-x-3/4 leading-6"
+          >
             My Lists
           </h3>
         </div>
-        <div>
+        <div class="w-full flex justify-end">
           <button
+            [ngClass]="isOpened ? 'block' : 'w-[1rem], px-2,'"
             (click)="addList()"
-            class="relative inline-flex items-center rounded-md border border-transparent bg-cyan-700 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:bg-cyan-600 focus:ring-offset-2"
+            class="relative inline-flex items-center rounded-md border border-transparent bg-sky-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-sky-500 focus:outline-none focus:ring-2 focus:bg-sky-700 focus:ring-offset-2"
             type="button"
           >
-            Add List
+            <p [ngClass]="isOpened ? '' : 'hidden'">Add List</p>
+            <p [ngClass]="isOpened ? 'hidden' : 'block'">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 4.5v15m7.5-7.5h-15"
+                />
+              </svg>
+            </p>
           </button>
         </div>
       </div>
       <app-task-list-card
+        (removeTaskList)="removeTaskList($event)"
         (click)="selectList(taskList)"
         *ngFor="let taskList of taskLists"
         [taskList]="taskList"
+        [isOpen]="isOpened"
       >
         {{ taskList.title }}
       </app-task-list-card>
@@ -54,9 +84,12 @@
       </svg>
     </button>
   </div>
-  <div class="flex justify-center items-center text-7xl ml-52">
-    <h1 *ngIf="!currentTaskList">Please Choose or Create a List</h1>
-  </div>
+  <h1
+    class="flex justify-center items-center text-7xl w-full"
+    *ngIf="!currentTaskList"
+  >
+    Please Choose or Create a List
+  </h1>
   <app-task-list
     class="w-full"
     *ngIf="currentTaskList"
