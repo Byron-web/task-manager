@@ -85,7 +85,7 @@ Here's why:
 
 Of course, no one task manager will serve all of your daily/weekly/monthly/yearly task management requirements since your needs may be different. So I'll be updating this application in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks in advance to all the people who have/will contribute/d to expanding this application!
 
-Use the clone this repo to get started.
+Clone this repo to get started.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
